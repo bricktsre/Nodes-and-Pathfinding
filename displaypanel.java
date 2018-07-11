@@ -6,11 +6,13 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class displaypanel extends JPanel{
 	private Node[] nodes = new Node[5];
+	private Character c;
 	
 	public displaypanel() {
 		setBackground(Color.BLACK);
 		setLayout(null);
 		initializeNodes();
+		c = new Character(5,5);
 	}
 	
 	private void initializeNodes() {
@@ -43,5 +45,6 @@ public class displaypanel extends JPanel{
         super.paintComponent( g );
         for(Node a: nodes)
         	a.draw(g);
+        c.draw(g);
     }
 }
