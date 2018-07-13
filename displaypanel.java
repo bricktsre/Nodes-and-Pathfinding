@@ -1,10 +1,9 @@
 import java.awt.Color;
 
+
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
 
@@ -19,10 +18,7 @@ public class displaypanel extends JPanel{
 		setBackground(Color.BLACK);
 		setLayout(null);
 		initializeNodes();
-		c = new Character(5,5);
-		
-		addKeyListener(new keylistener());
-		setFocusable(true);
+		c = new Character(5,5, nodes[1]);
 		
 		timer = new javax.swing.Timer(40, new TimerListener());
 		timer.start();
@@ -35,16 +31,16 @@ public class displaypanel extends JPanel{
 		Node node4 = new Node(5,1);
 		Node node5 = new Node(8,5);
 		
-		node1.addNeighbors(Direction.RIGHT,node4);
-		node1.addNeighbors(Direction.DOWN, node3);
-		node2.addNeighbors(Direction.UP, node4);
-		node2.addNeighbors(Direction.RIGHT, node5);
-		node2.addNeighbors(Direction.LEFT, node3);
-		node3.addNeighbors(Direction.UP, node1);
-		node3.addNeighbors(Direction.RIGHT, node2);
-		node4.addNeighbors(Direction.DOWN, node2);
-		node4.addNeighbors(Direction.LEFT, node1);
-		node5.addNeighbors(Direction.LEFT, node2);
+		node1.addNeighbors(node4, 4);
+		node1.addNeighbors(node3, 4);
+		node2.addNeighbors(node4, 4);
+		node2.addNeighbors(node5, 3);
+		node2.addNeighbors(node3, 4);
+		node3.addNeighbors(node1, 4);
+		node3.addNeighbors(node2, 4);
+		node4.addNeighbors(node2, 4);
+		node4.addNeighbors(node1, 4);
+		node5.addNeighbors(node2, 3);
 		
 		nodes[0]= node1;
 		nodes[1]=node2;
@@ -62,20 +58,6 @@ public class displaypanel extends JPanel{
 			repaint();
 		}
 	}
-	
-	private class keylistener extends KeyAdapter {
-        @Override
-        public void keyPressed(KeyEvent e){  
-        	if(e.getKeyCode() == KeyEvent.VK_LEFT)
-        	    c.move(Direction.LEFT);                
-        	else if(e.getKeyCode() == KeyEvent.VK_RIGHT)
-        	    c.move(Direction.RIGHT);                
-        	else if(e.getKeyCode() == KeyEvent.VK_UP)
-        	    c.move(Direction.UP);                
-        	else if(e.getKeyCode() == KeyEvent.VK_DOWN)
-        	    c.move(Direction.DOWN);
-        }
-    }
 	
 	@Override
     public void paintComponent( Graphics g ) {
