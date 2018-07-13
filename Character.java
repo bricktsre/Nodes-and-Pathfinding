@@ -9,6 +9,11 @@ public class Character {
 		col = x;
 	}
 	
+	public void move(Direction d) {
+		row+= d.dx;
+		col+= d.dy;
+	}
+	
 	public void draw(Graphics g) {
 		g.setColor(Color.YELLOW);
 		g.fillOval(row*50-13, col*50-13, 26, 26);
