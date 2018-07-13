@@ -4,3 +4,5 @@
 /Node.class
 /displaypanel.class
 /Character.class
+/displaypanel$keylistener.class
+/displaypanel$TimerListener.class
