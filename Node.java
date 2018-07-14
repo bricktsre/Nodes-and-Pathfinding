@@ -27,8 +27,8 @@ public class Node {
 	public void draw(Graphics g) {
 		g.setColor(Color.RED);
 		for(Edge e: neighbors)
-			g.drawLine(col*50, row*50, e.getNode().getCol()*50, e.getNode().getRow()*50);
+			g.drawLine(col*25, row*25, e.getNode().getCol()*25, e.getNode().getRow()*25);
 		g.setColor(Color.WHITE);
-		g.fillOval(col*50-15,row*50-15,30,30);
+		g.fillOval(col*25-7,row*25-7,15,15);
 	}
 }
