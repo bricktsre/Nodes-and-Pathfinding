@@ -18,7 +18,7 @@ public class Character {
 	}
 	
 	public void draw(Graphics g) {
-		g.setColor(Color.YELLOW);
-		g.fillOval(row*50-13, col*50-13, 26, 26);
+		g.setColor(Color.GREEN);
+		g.fillOval(row*25-6, col*25-6, 13, 13);
 	};
 }

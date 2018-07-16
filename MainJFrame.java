@@ -7,17 +7,19 @@ import javax.swing.JFrame;
 public class MainJFrame extends JFrame{
 	private displaypanel dp;
 
-	public MainJFrame(){
+	public MainJFrame(String s){
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		dp = new displaypanel();
-		dp.setPreferredSize(new Dimension(500,500));
+		dp = new displaypanel(s);
+		dp.setPreferredSize(new Dimension(700,800));
 		getContentPane().add(dp);
 		pack();
 	}
 
 	public static void main(String[] args){
-		MainJFrame f = new MainJFrame();
+		//String s = args[0];
+		String s = "graph.txt";
+		MainJFrame f = new MainJFrame(s);
 		f.display();
 	}
 
