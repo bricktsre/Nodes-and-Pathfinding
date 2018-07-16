@@ -34,9 +34,12 @@ public class displaypanel extends JPanel{
 			for(int i =0;i<nodes.length;i++)
 				nodes[i]= new Node(a.nextInt(),a.nextInt());
 			for(int i =0;i<nodes.length;i++) {
-				while(!a.hasNext("-1"))
-					nodes[i].addNeighbors(nodes[a.nextInt()-1], a.nextInt());
-				a.nextInt();
+				while(!a.hasNext("-1")) {
+					int node = a.nextInt()-1;
+					int cost = a.nextInt();
+					nodes[i].addNeighbors(nodes[node], cost);
+					nodes[node].addNeighbors(nodes[i], cost); 
+				}a.nextInt();
 			}
 			a.close();
 		} catch (FileNotFoundException e) {
