@@ -11,7 +11,7 @@ public class MainJFrame extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		dp = new displaypanel(s);
-		dp.setPreferredSize(new Dimension(800,800));
+		dp.setPreferredSize(new Dimension(700,800));
 		getContentPane().add(dp);
 		pack();
 	}
