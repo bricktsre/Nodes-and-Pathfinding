@@ -21,7 +21,8 @@ public class displaypanel extends JPanel{
 		setBackground(Color.BLACK);
 		setLayout(null);
 		initializeNodes(s);
-		c = new Character(5,5, nodes[1]);
+		c = new Character(25,25, nodes[0]);
+		c.setTarget(nodes[2]);
 		
 		timer = new javax.swing.Timer(40, new TimerListener());
 		timer.start();
@@ -53,6 +54,7 @@ public class displaypanel extends JPanel{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {		//Main method running the whole game
+			c.move();
 			repaint();
 		}
 	}
