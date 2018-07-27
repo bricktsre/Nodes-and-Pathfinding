@@ -1,5 +1,5 @@
 
-public class Edge {
+public class Edge implements Comparable<Edge>{
 	private Node n;
 	private int cost;
 	
@@ -14,5 +14,15 @@ public class Edge {
 	
 	public int getCost() {
 		return cost;
+	}
+
+	@Override
+	public int compareTo(Edge o) {
+		if(cost < o.getCost())
+			return -1;
+		else if(cost > o.getCost())
+			return 1;
+		else
+			return 0;
 	}
 }
