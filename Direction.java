@@ -8,4 +8,15 @@ public enum Direction {
 		this.dx = dx;
 		this.dy = dy;
 	}
+	
+	public Direction opposite() {
+		switch(this) {
+			case UP: return Direction.DOWN;
+			case RIGHT: return Direction.LEFT;
+			case DOWN: return Direction.UP;
+			case LEFT: return Direction.RIGHT;
+			default: break;
+		}
+		return Direction.NONE;
+	}
 }
