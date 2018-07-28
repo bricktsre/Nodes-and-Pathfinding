@@ -28,31 +28,55 @@ public class Pacman {
 			else if(nodeAt.getCol()>targetNode.getCol())
 				x-=speed;
 		}
+		checkTargetNode();
+		
+	}
+	
+	private void checkTargetNode() {
 		if((x/25==targetNode.getCol()) && (y/25==targetNode.getRow()) &&(x%25==0) && (y%25==0)) { 
 			nodeAt = targetNode;
-			if(nextTargetNode==null)
-				targetNode=null;
-			else {
+			if(nextTargetNode!=null) {
 				targetNode=nextTargetNode;
 				nextTargetNode=null;
+				d = nodeAt.directionOfNode(targetNode);
+			}else if(nodeAt.neighborInDirection(d)!=null)
+				targetNode=nodeAt.neighborInDirection(d);
+			else {
+				targetNode=null;
 			}
 		}
 	}
 	
 	public void changeTarget(Node n, Direction d) {
-		if(targetNode==null)
+		if(targetNode==null) {
 			targetNode = n;
-		else
+			this.d=d;
+		}else
 			nextTargetNode=n;
-		this.d=d;
 	}
 	
 	public Node getNodeAt() {
 		return nodeAt;
 	}
 	
+	public void setNodeAt(Node n) {
+		nodeAt=n;
+	}
+	
 	public Node getTargetNode() {
 		return targetNode;
+	}
+	
+	public void changeNextTargetNode(Node n) {
+		nextTargetNode = n;
+	}
+	
+	public void targetNodeNull() {
+		targetNode=null;
+	}
+	
+	public Direction getDirection() {
+		return d;
 	}
 	
 	public void draw(Graphics g) {

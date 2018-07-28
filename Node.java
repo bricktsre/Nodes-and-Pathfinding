@@ -58,6 +58,17 @@ public class Node implements Comparable<Node>{
 		return null;
 	}
 	
+	public Direction directionOfNode(Node n) {
+		if(n.getCol()>col)
+			return Direction.RIGHT;
+		else if(n.getCol()<col)
+			return Direction.LEFT;
+		else if(n.getRow()>row)
+			return Direction.DOWN;
+		else
+			return Direction.UP;
+	}
+	
 	public void draw(Graphics g) {
 		g.setColor(Color.RED);
 		for(Edge e: neighbors)

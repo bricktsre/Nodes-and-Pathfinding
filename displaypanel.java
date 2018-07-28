@@ -34,7 +34,7 @@ public class displaypanel extends JPanel{
 		c.setPath(p.astar(nodes, c.getNodeAt(), nodes[38]));
 		
 		addKeyListener(new keylistener());					//keylistener for changing direction
-		timer = new javax.swing.Timer(30, new TimerListener());
+		timer = new javax.swing.Timer(15, new TimerListener());
 		timer.start();
 		setFocusable(true);
 	}
@@ -60,7 +60,13 @@ public class displaypanel extends JPanel{
 	}
 	
 	private void changeD(Direction d) {
-		if(pman.getTargetNode()==null) {
+		if(d.opposite()==pman.getDirection()) {
+			Node n = pman.getTargetNode();
+			pman.targetNodeNull();
+			pman.changeTarget(pman.getNodeAt(), d);
+			pman.setNodeAt(n);	
+			pman.changeNextTargetNode(null);
+		}else if(pman.getTargetNode()==null) {
 			Node n = pman.getNodeAt().neighborInDirection(d);
 			if(n!=null)
 				pman.changeTarget(n,d);
