@@ -3,7 +3,7 @@ import java.awt.Graphics;
 import java.util.LinkedList;
 
 public class Character {
-	final int speed = 5;
+	final int speed = 1;
 	private int x,y;
 	private Node nodeAt;
 	private Node targetNode;
@@ -56,5 +56,5 @@ public class Character {
 	public void draw(Graphics g) {
 		g.setColor(Color.GREEN);
 		g.fillOval(x-11, y-11, 22, 22);
-	};
+	}
 }

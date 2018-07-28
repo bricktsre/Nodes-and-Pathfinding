@@ -31,6 +31,44 @@ public class Node implements Comparable<Node>{
 		return e;
 	}
 	
+	public Node neighborInDirection(Direction d) {
+		for(Edge e: neighbors) {
+			Node n = e.getNode();
+			switch(d) {
+				case RIGHT:
+					if(n.getCol()>col)
+						return n;
+					break;
+				case DOWN:
+					if(n.getRow()>row)
+						return n;
+					break;
+				case LEFT:
+					if(n.getCol()<col)
+						return n;
+					break;
+				case UP:
+					if(n.getRow()<row)
+						return n;
+					break;
+				default:
+					break;
+			}
+		}
+		return null;
+	}
+	
+	public Direction directionOfNode(Node n) {
+		if(n.getCol()>col)
+			return Direction.RIGHT;
+		else if(n.getCol()<col)
+			return Direction.LEFT;
+		else if(n.getRow()>row)
+			return Direction.DOWN;
+		else
+			return Direction.UP;
+	}
+	
 	public void draw(Graphics g) {
 		g.setColor(Color.RED);
 		for(Edge e: neighbors)
@@ -41,6 +79,8 @@ public class Node implements Comparable<Node>{
 
 	@Override
 	public int compareTo(Node o) {
+		if(this==null||o==null)
+			return 0;
 		if(row==o.getRow()&&col==o.getCol())
 			return 0;
 		else if((row>=o.getRow()&&col<o.getCol())||(row<o.getRow()&&col>=o.getCol()))
