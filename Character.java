@@ -56,5 +56,5 @@ public class Character {
 	public void draw(Graphics g) {
 		g.setColor(Color.GREEN);
 		g.fillOval(x-11, y-11, 22, 22);
-	};
+	}
 }
