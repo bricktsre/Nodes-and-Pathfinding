@@ -95,7 +95,7 @@ public class PathfindingAlgos {
 	}
 	
 	private int heuristic(Node a, Node b) {
-		//return Math.abs(a.getCol()-b.getCol())+Math.abs(a.getRow()-b.getRow());											//Manhatten Distance
+		//return Math.abs(a.getCol()-b.getCol())+Math.abs(a.getRow()-b.getRow());											//Manhattan Distance
 		return (int)Math.sqrt(Math.pow(Math.abs(a.getCol()-b.getCol()), 2)+Math.pow(Math.abs(a.getRow()-b.getRow()), 2));	//Straight line distance
 	}
 
