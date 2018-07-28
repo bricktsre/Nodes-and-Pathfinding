@@ -24,8 +24,10 @@ public class displaypanel extends JPanel{
 		initializeNodes(s);
 		PathfindingAlgos p = new PathfindingAlgos();
 		c = new Character(25,25, nodes[0]);
-		//c.setPath(p.breadthFirstSearch(nodes, c.getNodeAt(), nodes[54]));
-		c.setPath(p.Dijkstra(nodes, c.getNodeAt(), nodes[54]));
+		//c.setPath(p.breadthFirstSearch(nodes, c.getNodeAt(), nodes[38]));
+		//c.setPath(p.Dijkstra(nodes, c.getNodeAt(), nodes[38]));
+		//c.setPath(p.greedyBestFirstSearch(nodes, c.getNodeAt(), nodes[38]));
+		c.setPath(p.astar(nodes, c.getNodeAt(), nodes[38]));
 		timer = new javax.swing.Timer(60, new TimerListener());
 		timer.start();
 	}
