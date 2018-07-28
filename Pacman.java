@@ -2,10 +2,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Pacman {
-	final int speed = 5;
+	final int speed = 1;
 	private int x,y;
 	private Node nodeAt;
 	private Node targetNode;
+	private Node nextTargetNode;
+	private Direction d;
 	
 	public Pacman(int x, int y, Node n) {
 		this.x = x;
@@ -14,10 +16,8 @@ public class Pacman {
 	}
 	
 	public void move() {
-		if(nodeAt.compareTo(targetNode)==0)
+		if(targetNode==null)
 			return;
-		else if((x/25==targetNode.getCol()) && (y/25==targetNode.getRow()) &&(x%25==0) && (y%25==0)) 
-			nodeAt = targetNode;
 		else {
 			if(nodeAt.getRow()<targetNode.getRow())
 				y+=speed;
@@ -28,14 +28,31 @@ public class Pacman {
 			else if(nodeAt.getCol()>targetNode.getCol())
 				x-=speed;
 		}
+		if((x/25==targetNode.getCol()) && (y/25==targetNode.getRow()) &&(x%25==0) && (y%25==0)) { 
+			nodeAt = targetNode;
+			if(nextTargetNode==null)
+				targetNode=null;
+			else {
+				targetNode=nextTargetNode;
+				nextTargetNode=null;
+			}
+		}
 	}
 	
-	public void setTarget(Node n) {
-		targetNode = n;
+	public void changeTarget(Node n, Direction d) {
+		if(targetNode==null)
+			targetNode = n;
+		else
+			nextTargetNode=n;
+		this.d=d;
 	}
 	
 	public Node getNodeAt() {
 		return nodeAt;
+	}
+	
+	public Node getTargetNode() {
+		return targetNode;
 	}
 	
 	public void draw(Graphics g) {
