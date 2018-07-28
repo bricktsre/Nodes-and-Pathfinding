@@ -31,6 +31,33 @@ public class Node implements Comparable<Node>{
 		return e;
 	}
 	
+	public Node neighborInDirection(Direction d) {
+		for(Edge e: neighbors) {
+			Node n = e.getNode();
+			switch(d) {
+				case RIGHT:
+					if(n.getCol()>col)
+						return n;
+					break;
+				case DOWN:
+					if(n.getRow()>row)
+						return n;
+					break;
+				case LEFT:
+					if(n.getCol()<col)
+						return n;
+					break;
+				case UP:
+					if(n.getRow()<row)
+						return n;
+					break;
+				default:
+					break;
+			}
+		}
+		return null;
+	}
+	
 	public void draw(Graphics g) {
 		g.setColor(Color.RED);
 		for(Edge e: neighbors)
