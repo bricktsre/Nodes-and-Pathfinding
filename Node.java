@@ -41,6 +41,8 @@ public class Node implements Comparable<Node>{
 
 	@Override
 	public int compareTo(Node o) {
+		if(this==null||o==null)
+			return 0;
 		if(row==o.getRow()&&col==o.getCol())
 			return 0;
 		else if((row>=o.getRow()&&col<o.getCol())||(row<o.getRow()&&col>=o.getCol()))
