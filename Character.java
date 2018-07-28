@@ -1,11 +1,13 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.LinkedList;
 
 public class Character {
-	final int speed = 1;
+	final int speed = 5;
 	private int x,y;
 	private Node nodeAt;
 	private Node targetNode;
+	private LinkedList<Node> path;
 	
 	public Character(int x, int y, Node n) {
 		this.x = x;
@@ -14,10 +16,9 @@ public class Character {
 	}
 	
 	public void move() {
+		checkTargetNode();
 		if(nodeAt.compareTo(targetNode)==0)
 			return;
-		else if((x/25==targetNode.getCol()) && (y/25==targetNode.getRow()) &&(x%25==0) && (y%25==0))
-			nodeAt= targetNode;
 		else {
 			if(nodeAt.getRow()<targetNode.getRow())
 				y+=speed;
@@ -30,12 +31,30 @@ public class Character {
 		}
 	}
 	
+	private void checkTargetNode() {
+		if((x/25==targetNode.getCol()) && (y/25==targetNode.getRow()) &&(x%25==0) && (y%25==0)) {
+			nodeAt = targetNode;
+			if(path.isEmpty())
+				return;
+			targetNode = path.pop();
+		}
+	}
+	
 	public void setTarget(Node n) {
 		targetNode = n;
 	}
 	
+	public void setPath(LinkedList<Node> p) {
+		path =p;
+		targetNode = path.pop();
+	}
+	
+	public Node getNodeAt() {
+		return nodeAt;
+	}
+	
 	public void draw(Graphics g) {
 		g.setColor(Color.GREEN);
-		g.fillOval(x-6, y-6, 13, 13);
+		g.fillOval(x-11, y-11, 22, 22);
 	};
 }

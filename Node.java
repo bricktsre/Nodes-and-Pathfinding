@@ -24,12 +24,19 @@ public class Node implements Comparable<Node>{
 		return col;
 	}
 	
+	public Edge[] getNeighbors() {
+		Edge[] e = new Edge[neighbors.size()];
+		for(int i =0; i<e.length;i++)
+			e[i]=neighbors.get(i);
+		return e;
+	}
+	
 	public void draw(Graphics g) {
 		g.setColor(Color.RED);
 		for(Edge e: neighbors)
 			g.drawLine(col*25, row*25, e.getNode().getCol()*25, e.getNode().getRow()*25);
 		g.setColor(Color.WHITE);
-		g.fillOval(col*25-7,row*25-7,15,15);
+		g.fillOval(col*25-9,row*25-9,18,18);
 	}
 
 	@Override

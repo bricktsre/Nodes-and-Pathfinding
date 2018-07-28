@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import javax.swing.JPanel;
@@ -21,10 +22,13 @@ public class displaypanel extends JPanel{
 		setBackground(Color.BLACK);
 		setLayout(null);
 		initializeNodes(s);
+		PathfindingAlgos p = new PathfindingAlgos();
 		c = new Character(25,25, nodes[0]);
-		c.setTarget(nodes[2]);
-		
-		timer = new javax.swing.Timer(40, new TimerListener());
+		//c.setPath(p.breadthFirstSearch(nodes, c.getNodeAt(), nodes[38]));
+		//c.setPath(p.Dijkstra(nodes, c.getNodeAt(), nodes[38]));
+		//c.setPath(p.greedyBestFirstSearch(nodes, c.getNodeAt(), nodes[38]));
+		c.setPath(p.astar(nodes, c.getNodeAt(), nodes[38]));
+		timer = new javax.swing.Timer(60, new TimerListener());
 		timer.start();
 	}
 	
