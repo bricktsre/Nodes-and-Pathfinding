@@ -16,12 +16,14 @@ import javax.swing.JPanel;
 public class displaypanel extends JPanel{
 	private Node[] nodes;
 	private Character c;
+	private Pacman	pman;
 	private javax.swing.Timer timer;
 	
 	public displaypanel(String s) {
 		setBackground(Color.BLACK);
 		setLayout(null);
 		initializeNodes(s);
+		pman = new Pacman(300,575,nodes[29]);
 		PathfindingAlgos p = new PathfindingAlgos();
 		c = new Character(25,25, nodes[0]);
 		//c.setPath(p.breadthFirstSearch(nodes, c.getNodeAt(), nodes[38]));
@@ -59,6 +61,7 @@ public class displaypanel extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {		//Main method running the whole game
 			c.move();
+			pman.move();
 			repaint();
 		}
 	}
@@ -69,5 +72,6 @@ public class displaypanel extends JPanel{
         for(Node a: nodes)
         	a.draw(g);
         c.draw(g);
+        pman.draw(g);
     }
 }
