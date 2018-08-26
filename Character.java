@@ -3,7 +3,7 @@ import java.awt.Graphics;
 import java.util.LinkedList;
 
 public class Character {
-	final int speed = 1;
+	final int speed = 5;
 	private int x,y;
 	private Node nodeAt;
 	private Node targetNode;
